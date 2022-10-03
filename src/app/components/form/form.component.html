@@ -1,0 +1,19 @@
+<form [formGroup]="formularioUsuario" (ngSubmit)="agregarUsuario()">
+    <div class="mb-3">
+      <label class="form-label">Email address</label>
+      <input type="text" class="form-control" formControlName="correo">
+      <p *ngIf="validacion('correo', 'required')" class="form-text">El email es requerido</p>
+      <div *ngIf="validacion('correo', 'pattern')" class="form-text">El formato del campo es invalido</div>
+
+    </div>
+   
+    <div class="mb-3">
+      <label for="exampleInputPassword1" class="form-label">Password</label>
+      <input type="password" class="form-control" formControlName="pass">
+      <div *ngIf="validacion('pass', 'required')" class="form-text">La contraseña es requerida</div>
+      <div *ngIf="validacion('pass', 'minlength')" class="form-text">La contraseña debe tener al menos 8 caracteres</div>
+      <div *ngIf="validacion('pass', 'pattern')" class="form-text">La contraseña debe tener una letra mayuscula</div>
+
+    </div>
+    <button type="submit" class="btn btn-primary" [disabled]="formularioUsuario.invalid">Submit</button>
+</form>
